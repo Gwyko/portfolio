@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  cursor: none;
+  box-sizing: border-box; /* Ensures padding doesn't increase element width */
+
+}
+
+:root {
+    /* The Blue Spectrum */
+    --bg-dark: #0f172a;        /* Deep Navy (Background) */
+    --bg-card: #1e293b;        /* Slate Blue (Cards/Sections) */
+    --text-main: #f8fafc;       /* Off-White (Primary Text) */
+    --text-muted: #94a3b8;      /* Muted Blue-Gray (Secondary Text) */
+    
+    /* The Trust-Blue Accents */
+    --accent-blue: #3b82f6;    /* Bright Professional Blue */
+    --accent-hover: #2563eb;   /* Darker Blue for interaction */
+    --highlight: #60a5fa;      /* Light Blue for soft highlights */
+}
+
+.glow-subtext, p {
+  font-weight: 300; /* Uses the light weight you imported */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased; 
+
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 2, 2, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px; /* Adjust this to change grid size */
+    cursor: none;
+
+    padding-top: 200px;
+}
+
+/* The container now acts only as the anchor point */
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    z-index: 9999;
+    /* No background or border-radius here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The lines now hold the inversion effect */
+.custom-cursor::before, .custom-cursor::after {
+    content: '';
+    position: absolute;
+    background-color: white; 
+    /* This makes the white lines invert whatever is behind them */
+    mix-blend-mode: difference; 
+}
+
+.custom-cursor::before { width: 2px; height: 15px; }
+.custom-cursor::after { width: 15px; height: 2px; }
+
+.glass-nav {
+  /* How it began: We fix the position to the top */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+
+  backdrop-filter: blur(10px);          /* The actual blur effect */
+  -webkit-backdrop-filter: blur(10px);  /* For Safari compatibility */
+  
+  /* Adding a subtle border for depth */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1003;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+
+    color: var(--text-muted); /* Default: Muted Blue-Gray */
+    font-family: 'Cinzel Decorative', cursive; /* Keeping your font choice */
+    font-size: 18px;
+    transition: all 0.5s ease; /* Smoothly transitions color and other properties */
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue); /* Hover: Bright Professional Blue */
+    text-shadow: 0 0 8px var(--highlight); /* Soft glowing highlight effect */
+    
+    background: rgba(138, 180, 248, 0.03); /* Very faint blue tint */
+    border: 1px solid rgba(138, 180, 248, 0.4); /* Semi-transparent blue border */
+     border-radius: 4px; /* Slight rounding on the corners */
+  
+    /* Smooth transition for the glow effect */
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.flashlight-container::before {
+    content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle 200px at var(--x) var(--y), rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.192) 100%);
+    z-index: 33333;
+}
+
+.logo {
+    font-family: 'Cinzel Decorative', cursive; /* The browser treats this as a display/cursive font */
+    font-size: clamp(22px, 5vw, 48px);
+    letter-spacing: 2px;
+    color: var(--highlight);
+    transition: color 0.5 ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 10px var(--accent-blue);
+}
+
+.sub-logo {
+    font-size: 18px;
+    color: var(--text-muted);
+    padding-left: 20px;
+}
+
+.nav-links a {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: minmax(250px, 350px) 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1002;
+    font-family: 'Cinzel Decorative', cursive; /* The browser treats this as a display/cursive font */
+}
+
+.timeline-column {
+    border-right: 1px solid var(--text-muted); /* The vertical spine */
+    padding-right: 40px;
+}
+
+.year {
+    color: var(--highlight);
+    font-size: 1.5rem;
+    display: block;
+}
+
+.sub-year {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.timeline-bullets {
+    list-style: none;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+.details-content {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-muted);
+}
+
+ul {
+  list-style: none; /* Step 1: Remove the ugly default bullets */
+  padding-left: 0;
+}
+
+/* Step 2: Inject your custom sci-fi decoration */
+ul li::before {
+  content: "// ";  /* Inserts a sleek double slash instead */
+  color: var(--accent-blue);  /* Cyber cyan color */
+  margin-right: 3px;
+}
+
+@media screen and (max-width: 768px) {
+
+    body {
+        padding-top: 140px;
+    }
+
+    /* NAVBAR */
+    .glass-nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .sub-logo {
+        font-size: 12px;
+        padding-left: 0;
+        margin-top: 8px;
+    }
+
+    /* NAV LINKS */
+    .nav-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    /* MAIN GRID */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 15px;
+        margin-top: 40px;
+    }
+
+    /* TIMELINE */
+    .timeline-column {
+        border-right: none;
+        border-bottom: 1px solid var(--text-muted);
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .year {
+        font-size: 1.2rem;
+    }
+
+    .sub-year {
+        font-size: 0.7rem;
+    }
+
+    .timeline-bullets {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* DETAILS */
+    .details-content {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .details-content ul {
+        padding-left: 20px;
+    }
+
+    .details-content li {
+        margin-bottom: 10px;
+    }
+
+    /* CONTACT */
+    #contact {
+        margin-top: 20px !important;
+        padding: 15px;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        word-wrap: break-word;
+    }
+
+    /* GitHub & Email Long Text */
+    a,
+    p {
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    /* Disable custom cursor on phones */
+    .custom-cursor {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    * {
+        cursor: auto;
+    }
+
+    /* Reduce flashlight effect on mobile */
+    .flashlight-container::before {
+        background: none;
+    }
+}
+
+/* EXTRA SMALL PHONES */
+@media screen and (max-width: 480px) {
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .sub-logo {
+        font-size: 11px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .year {
+        font-size: 1rem;
+    }
+
+    .portfolio-grid {
+        padding: 10px;
+    }
+
+    .details-content {
+        font-size: 13px;
+    }
+}

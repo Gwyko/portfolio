@@ -183,21 +183,99 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-.details-content {
+.details-column {
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--accent-blue);
+    background-color: var(--bg-card);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 800px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-top: 6px solid var(--highlight); 
+}
+
+.section-title {
+    font-size: 24px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.details-content h3 {
+    font-size: 16px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.details-content {
+
     color: var(--text-muted);
 }
 
-ul {
-  list-style: none; /* Step 1: Remove the ugly default bullets */
-  padding-left: 0;
+.details-content h3::after {
+    content: "";
+    flex: 1;
+    margin-left: 15px;
+    height: 1px;
+    background-color: #edf2f7;
 }
 
-/* Step 2: Inject your custom sci-fi decoration */
-ul li::before {
-  content: "// ";  /* Inserts a sleek double slash instead */
-  color: var(--accent-blue);  /* Cyber cyan color */
-  margin-right: 3px;
+.details-content ul {
+    list-style-type: none; /* Remove default bullets for custom look */
+    padding-left: 0;
+    margin: 0;
+}
+
+.details-content ul li {
+    font-size: 14.5px;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+/* Custom sleek square bullet points */
+.details-content ul li::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    color: #3182ce; /* Bright blue accent for bullets */
+    font-size: 12px;
+    top: -1px;
+}
+
+/* 6. Specific List Adjustments */
+/* Strong tags for category tags/project titles */
+.details-content ul li strong {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+/* Projects section specific spacing */
+.details-content h3:nth-of-type(3) + ul li {
+    margin-bottom: 18px; /* Adds slight breathing room between projects */
+    line-height: 1.5;
+}
+
+/* Line break styling inside project lists */
+.details-content ul li br {
+    margin-bottom: 4px;
 }
 
 @media screen and (max-width: 768px) {
